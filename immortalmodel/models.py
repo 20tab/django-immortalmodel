@@ -12,13 +12,15 @@ class ImmortalQuerySet(models.query.QuerySet):
 
 
 class ImmortalManager(models.Manager):
-    def get_query_set(self):
+    def get_queryset(self):
         """
         Returns a new QuerySet object.  Subclasses can override this method
         to easily customize the behavior of the Manager.
         It filters by "deleted" attribute.
         """
         return ImmortalQuerySet(self.model, using=self._db).filter(deleted=False)
+
+    get_query_set = get_queryset
 
 
 class ImmortalModel(models.Model):
