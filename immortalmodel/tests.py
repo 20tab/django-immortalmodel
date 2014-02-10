@@ -1,6 +1,7 @@
 from django.test import TestCase
 from immortalmodel.models import ImmortalModel
 
+
 class ImmortalTestCase(TestCase):
     """
     add immortalmodel to INSTALLED_APPS to run the following tests !!!
