@@ -14,7 +14,7 @@ class ImmortalTestCase(TestCase):
         b = self.Blashyrkh()
         b.delete()
         self.assertRaises(self.Blashyrkh.DoesNotExist, self.Blashyrkh.objects.get, pk=b.pk)
-        self.Blashyrkh.baseobjects.get(pk=b.pk)
+        self.assertIsNotNone(self.Blashyrkh.baseobjects.get(pk=b.pk))
 
     def test_resuscitate(self):
         b = self.Blashyrkh()
@@ -22,7 +22,7 @@ class ImmortalTestCase(TestCase):
         self.assertRaises(self.Blashyrkh.DoesNotExist, self.Blashyrkh.objects.get, pk=b.pk)
         b.deleted = False
         b.save()
-        self.Blashyrkh.objects.get(pk=b.pk)
+        self.assertIsNotNone(self.Blashyrkh.objects.get(pk=b.pk))
 
     def test_manually_deleted(self):
         b = self.Blashyrkh()

@@ -27,12 +27,12 @@ class ImmortalModel(models.Model):
     """
     Implementation of undeletable model
     """
-    deleted = models.BooleanField(_(u'Deleted'), default=False)
+    deleted = models.BooleanField(_('deleted'), default=False)
 
     objects = ImmortalManager()
     baseobjects = models.Manager()
 
-    def delete(self, using=None):
+    def delete(self, using=None, **kwargs):
         self.deleted = True
         self.save()
 
